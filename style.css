@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #18181f;
+  color: #f4f4f6;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.status {
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: #272733;
+  border: 1px solid #3a3a4a;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, 64px);
+  grid-template-rows: repeat(8, 64px);
+  border: 6px solid #4a3525;
+  border-radius: 4px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.square {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+}
+
+.square.light {
+  background-color: #f0d9b5;
+}
+
+.square.dark {
+  background-color: #b58863;
+}
+
+.square.valid-move::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(46, 204, 113, 0.75);
+  cursor: pointer;
+}
+
+.square.valid-move {
+  cursor: pointer;
+}
+
+.piece {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.piece:hover {
+  transform: scale(1.06);
+}
+
+.piece.light {
+  background: radial-gradient(circle at 30% 30%, #ffffff, #dcd3c1);
+}
+
+.piece.dark {
+  background: radial-gradient(circle at 30% 30%, #4a4a4a, #1c1c1c);
+}
+
+.piece.selected {
+  outline: 3px solid #ffd166;
+  outline-offset: 2px;
+  transform: scale(1.08);
+}
+
+.piece.king::after {
+  content: "♛";
+  font-size: 24px;
+  color: #d4af37;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+button {
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #ffd166;
+  color: #18181f;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #ffca4b;
+}
+
+@media (max-width: 560px) {
+  .board {
+    grid-template-columns: repeat(8, 42px);
+    grid-template-rows: repeat(8, 42px);
+  }
+  .square {
+    width: 42px;
+    height: 42px;
+  }
+  .piece {
+    width: 32px;
+    height: 32px;
+  }
+}
